@@ -22,7 +22,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "insert into Balance(Pair, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime) values(@UID,@Coin, @Amount,datetime('now', 'localtime'),datetime('now', 'localtime'))";
+                string sql = "insert into Balance(Pair, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime) values(@Pair,@Coin, @Currency,@Ask,@Bid,datetime('now', 'localtime'),datetime('now', 'localtime'))";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
