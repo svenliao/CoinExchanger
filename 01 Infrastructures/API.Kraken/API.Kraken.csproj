@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Helpers\Broker.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="KrakenRepertory.cs" />
     <Compile Include="Models\CancelOrderResult.cs" />
     <Compile Include="Models\GetOrdersResult.cs" />
     <Compile Include="Models\KrakenOrder.cs" />
@@ -64,6 +65,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\02 Domains\Domain.Common\Domain.Common.csproj">
+      <Project>{6630cd45-9e7f-41fe-adee-a5ee625e5799}</Project>
+      <Name>Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain.Kraken\Domain.Kraken.csproj">
+      <Project>{605fb6bb-35ea-4b74-b17d-f56a98f7d91e}</Project>
+      <Name>Domain.Kraken</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL.DataBase\DAL.DataBase.csproj">
+      <Project>{9eb340a7-c20c-4174-b693-f850569276d3}</Project>
+      <Name>DAL.DataBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

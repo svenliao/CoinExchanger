@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBaseModels\AccountTable.cs" />
+    <Compile Include="DataBaseModels\TickerTable.cs" />
     <Compile Include="DataBaseModels\BalanceTable.cs" />
     <Compile Include="DataBaseModels\ExchangeRateTable.cs" />
     <Compile Include="DataBaseModels\LogTable.cs" />

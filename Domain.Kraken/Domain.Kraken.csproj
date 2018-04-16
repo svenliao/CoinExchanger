@@ -43,5 +43,11 @@
     <Compile Include="IKrakenRepertory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\02 Domains\Domain.Common\Domain.Common.csproj">
+      <Project>{6630cd45-9e7f-41fe-adee-a5ee625e5799}</Project>
+      <Name>Domain.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

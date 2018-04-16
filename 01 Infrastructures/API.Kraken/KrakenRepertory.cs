@@ -12,7 +12,6 @@ namespace API.Kraken
     {
         public  Client client = new Client();
         public  Broker broker = new Broker();
-        public  CurrencyClient rateClient = new CurrencyClient();
 
         public List<BalanceTable> GetBalance()
         {
