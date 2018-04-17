@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\BookingTableDao.cs" />
     <Compile Include="Dao\TickerDao.cs" />
     <Compile Include="Dao\BalanceDao.cs" />
     <Compile Include="Dao\AccountDao.cs" />
@@ -74,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Database\KChangeDatabase.db" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseModels\AccountTable.cs" />
+    <Compile Include="DataBaseModels\BookingTable.cs" />
     <Compile Include="DataBaseModels\TickerTable.cs" />
     <Compile Include="DataBaseModels\BalanceTable.cs" />
     <Compile Include="DataBaseModels\ExchangeRateTable.cs" />

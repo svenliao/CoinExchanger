@@ -27,8 +27,8 @@ namespace DAL.DataBase.Dao
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@UID", obj.UID);
-                    cmd.Parameters.AddWithValue("@ApiVersion", obj.Coin);
-                    cmd.Parameters.AddWithValue("@Secret", obj.Amount);
+                    cmd.Parameters.AddWithValue("@Coin", obj.Coin);
+                    cmd.Parameters.AddWithValue("@Amount", obj.Amount);
 
                     SQLiteHelper.SQLiteHelper.ExecuteNonQuery(conStr, cmd);
                 }
@@ -53,8 +53,8 @@ namespace DAL.DataBase.Dao
                 {
                     cmd.Parameters.AddWithValue("@ID", obj.ID);
                     cmd.Parameters.AddWithValue("@UID", obj.UID);
-                    cmd.Parameters.AddWithValue("@ApiVersion", obj.Coin);
-                    cmd.Parameters.AddWithValue("@Secret", obj.Amount);
+                    cmd.Parameters.AddWithValue("@Coin", obj.Coin);
+                    cmd.Parameters.AddWithValue("@Amount", obj.Amount);
 
                     return SQLiteHelper.SQLiteHelper.ExecuteNonQuery(conStr, cmd);
                 }
@@ -111,7 +111,7 @@ namespace DAL.DataBase.Dao
                         {
                             ID = long.Parse(reader["id"].ToString()),
                             UID = reader["UID"].ToString(),
-                            Amount = double.Parse(reader["ApiVersion"].ToString()),
+                            Amount = double.Parse(reader["Amount"].ToString()),
                             Coin = reader["Coin"].ToString(),                          
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
@@ -136,7 +136,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "sselect ID,UID, Coin, Amount,CreateTime,LastChangeTime from Balanc where uid=@uid";
+                string sql = "select ID,UID, Coin, Amount,CreateTime,LastChangeTime from Balance where uid=@uid";
 
                 List<BalanceTable> results = new List<BalanceTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -149,7 +149,7 @@ namespace DAL.DataBase.Dao
                         {
                             ID = long.Parse(reader["id"].ToString()),
                             UID = reader["UID"].ToString(),
-                            Amount = double.Parse(reader["ApiVersion"].ToString()),
+                            Amount = double.Parse(reader["Amount"].ToString()),
                             Coin = reader["Coin"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),

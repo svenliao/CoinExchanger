@@ -11,22 +11,26 @@
     using System.Net;
     using System.Security.Cryptography;
     using System.Text;
+    using Domain.Common.DataBaseModels;
+    using Domain.Kraken;
+    using DAL.DataBase.Dao;
 
     public class Client : IDisposable
     {
-        string _url;
+        string _url= "https://api.kraken.com";
         int _version;
         string _key;
         string _secret;
-        //RateGate was taken from http://www.jackleitch.net/2010/10/better-rate-limiting-with-dot-net/
         RateGate _rateGate;
 
         public Client()
         {
-            _url = ConfigurationManager.AppSettings["KrakenBaseAddress"];
-            _version = int.Parse(ConfigurationManager.AppSettings["KrakenApiVersion"]);
-            _key = ConfigurationManager.AppSettings["KrakenKey"];
-            _secret = ConfigurationManager.AppSettings["KrakenSecret"];
+            var dao = new AccountDao();
+            var account = dao.Select().Find(a => a.Default > 0);
+
+            _version = account.ApiVersion;
+            _key = account.Key;
+            _secret = account.Secret;
             _rateGate = new RateGate(1, TimeSpan.FromSeconds(5));
             
         }

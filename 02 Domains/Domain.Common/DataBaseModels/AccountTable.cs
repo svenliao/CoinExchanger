@@ -13,6 +13,7 @@ namespace Domain.Common.DataBaseModels
         public int ApiVersion { get; set; }
         public string Secret { get; set; }
         public string Key { get; set; }
+        public int Default { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime LastChangeTime { get; set; }
     }

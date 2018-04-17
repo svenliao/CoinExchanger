@@ -10,26 +10,24 @@ using Domain.Common.DataBaseModels;
 
 namespace DAL.DataBase.Dao
 {
-    public class TickerDao
+    public class BookingTableDao
     {
         readonly string conStr = SQLiteHelper.SQLiteHelper.LocalDbConnectionString;
 
         /// <summary>
-        ///  TickerTable
+        ///  BookingTable
         /// </summary>
-        /// <param name="TickerTable">TickerTable实体对象</param>
-        public void Insert(TickerTable obj)
+        /// <param name="BookingTable">BookingTable实体对象</param>
+        public void Insert(BookingTable obj)
         {
             try
             {
-                string sql = "insert into Tickers(Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime) values(@Pair,@AskCount,@BidCount,@Coin, @Currency,@Ask,@Bid,datetime('now', 'localtime'),datetime('now', 'localtime'))";
+                string sql = "insert into Booking(Pair, Coin, Currency,Asks,Bids,CreateTime,LastChangeTime) values(@Pair,@Coin, @Currency,@Asks,@Bids,datetime('now', 'localtime'),datetime('now', 'localtime'))";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
-                    cmd.Parameters.AddWithValue("@Ask", obj.Ask);
-                    cmd.Parameters.AddWithValue("@AskCount", obj.AskCount);
-                    cmd.Parameters.AddWithValue("@BidCount", obj.BidCount);
-                    cmd.Parameters.AddWithValue("@Bid", obj.Bid);
+                    cmd.Parameters.AddWithValue("@Asks", obj.Asks);
+                    cmd.Parameters.AddWithValue("@Bids", obj.Bids);
                     cmd.Parameters.AddWithValue("@Coin", obj.Coin);
                     cmd.Parameters.AddWithValue("@Currency", obj.Currency);
                     cmd.Parameters.AddWithValue("@Pair", obj.Pair);
@@ -39,27 +37,25 @@ namespace DAL.DataBase.Dao
             }
             catch (Exception ex)
             {
-                throw new Exception("调用TickerTable时，访问Insert时出错", ex);
+                throw new Exception("调用BookingTable时，访问Insert时出错", ex);
             }
         }
         /// <summary>
-        /// TickerTable
+        /// BookingTable
         /// </summary>
-        /// <param name="TickerTable">TickerTable</param>
+        /// <param name="BookingTable">BookingTable</param>
         /// <returns>状态代码</returns>
-        public int Update(TickerTable obj)
+        public int Update(BookingTable obj)
         {
             try
             {
-                string sql = "UPDATE Tickers set Ask=@Ask,AskCount=@AskCount, Bid=@Bid,BidCount=@BidCount, Coin=@Coin,Currency=@Currency,Pair=@Pair,LastChangeTime=datetime('now', 'localtime') where id=@ID";
+                string sql = "UPDATE Booking set Asks=@Asks, Bids=@Bids, Coin=@Coin,Currency=@Currency,Pair=@Pair,LastChangeTime=datetime('now', 'localtime') where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@ID", obj.ID);
-                    cmd.Parameters.AddWithValue("@AskCount", obj.AskCount);
-                    cmd.Parameters.AddWithValue("@BidCount", obj.BidCount);
-                    cmd.Parameters.AddWithValue("@Ask", obj.Ask);
-                    cmd.Parameters.AddWithValue("@Bid", obj.Bid);
+                    cmd.Parameters.AddWithValue("@Asks", obj.Asks);
+                    cmd.Parameters.AddWithValue("@Bids", obj.Bids);
                     cmd.Parameters.AddWithValue("@Coin", obj.Coin);
                     cmd.Parameters.AddWithValue("@Currency", obj.Currency);
                     cmd.Parameters.AddWithValue("@Pair", obj.Pair);
@@ -69,21 +65,21 @@ namespace DAL.DataBase.Dao
             }
             catch (Exception ex)
             {
-                throw new Exception("调用TickerTable时，访问Update时出错", ex);
+                throw new Exception("调用BookingTable时，访问Update时出错", ex);
             }
         }
 
 
         /// <summary>
-        /// TickerTable
+        /// BookingTable
         /// </summary>
-        /// <param name="BalanceTable">TickerTable</param>
+        /// <param name="BookingTable">BookingTable</param>
         /// <returns>状态代码</returns>
-        public int Delete(TickerTable obj)
+        public int Delete(BookingTable obj)
         {
             try
             {
-                string sql = "Delect from Tickers where id=@ID";
+                string sql = "Delect from Booking where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
@@ -94,35 +90,33 @@ namespace DAL.DataBase.Dao
             }
             catch (Exception ex)
             {
-                throw new Exception("调用TickerTable 时，访问Delete时出错", ex);
+                throw new Exception("调用BookingTable 时，访问Delete时出错", ex);
             }
         }
 
         /// <summary>
-        /// TickerTable
+        /// BookingTable
         /// </summary>
-        /// <param name="TickerTable">TickerTable</param>
+        /// <param name="BookingTable">BookingTable</param>
         /// <returns>状态代码</returns>
-        public List<TickerTable> Select()
+        public List<BookingTable> Select()
         {
             try
             {
-                string sql = "select ID,Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime from Tickers";
+                string sql = "select ID,Pair, Coin, Currency,Asks,Bids,CreateTime,LastChangeTime from Booking";
 
-                var results = new List<TickerTable>();
+                var results = new List<BookingTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     var reader = SQLiteHelper.SQLiteHelper.ExecuteReader(conStr, cmd);
                     while (reader.Read())
                     {
-                        results.Add(new TickerTable()
+                        results.Add(new BookingTable()
                         {
                             ID = long.Parse(reader["id"].ToString()),
                             Pair = reader["Pair"].ToString(),
-                            Ask = double.Parse(reader["Ask"].ToString()),
-                            Bid = double.Parse(reader["Bid"].ToString()),
-                            AskCount = double.Parse(reader["AskCount"].ToString()),
-                            BidCount = double.Parse(reader["BidCount"].ToString()),
+                            Asks = double.Parse(reader["Asks"].ToString()),
+                            Bids = double.Parse(reader["Bids"].ToString()),
                             Coin = reader["Coin"].ToString(),
                             Currency=reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
@@ -135,36 +129,34 @@ namespace DAL.DataBase.Dao
             }
             catch (Exception ex)
             {
-                throw new Exception("调用TickerTable 时，访问Select时出错", ex);
+                throw new Exception("调用BookingTable 时，访问Select时出错", ex);
             }
         }
 
         /// <summary>
-        /// TickerTable
+        /// BookingTable
         /// </summary>
-        /// <param name="TickerTable">TickerTable</param>
+        /// <param name="BookingTable">BookingTable</param>
         /// <returns>状态代码</returns>
-        public List<TickerTable> Select(string Coin)
+        public List<BookingTable> Select(string Coin)
         {
             try
             {
-                string sql = "select ID,Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime from Tickers where coin=@coin";
+                string sql = "select ID,Pair, Coin, Currency,Asks,Bids,CreateTime,LastChangeTime from Booking where coin=@coin";
 
-                List<TickerTable> results = new List<TickerTable>();
+                List<BookingTable> results = new List<BookingTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@Coin", Coin);
                     var reader = SQLiteHelper.SQLiteHelper.ExecuteReader(conStr, cmd);
                     while (reader.Read())
                     {
-                        results.Add(new TickerTable()
+                        results.Add(new BookingTable()
                         {
                             ID = long.Parse(reader["id"].ToString()),
                             Pair = reader["Pair"].ToString(),
-                            Ask = double.Parse(reader["Ask"].ToString()),
-                            Bid = double.Parse(reader["Bid"].ToString()),
-                            AskCount = double.Parse(reader["AskCount"].ToString()),
-                            BidCount = double.Parse(reader["BidCount"].ToString()),
+                            Asks = double.Parse(reader["Asks"].ToString()),
+                            Bids = double.Parse(reader["Bids"].ToString()),
                             Coin = reader["Coin"].ToString(),
                             Currency = reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
@@ -177,11 +169,11 @@ namespace DAL.DataBase.Dao
             }
             catch (Exception ex)
             {
-                throw new Exception("调用TickerTable 时，访问Select时出错", ex);
+                throw new Exception("调用BookingTable 时，访问Select时出错", ex);
             }
         }
 
-        public void InsertOrUpdate(List<TickerTable> objs)
+        public void InsertOrUpdate(List<BookingTable> objs)
         {
             foreach (var obj in objs)
             {

@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Domain.Common.DataBaseModels
 {
-    public class TickerTable
+    public class BookingTable
     {
         public long ID { get; set; }
 
         public string Pair { get; set; }
+
         public string Coin { get; set; }
         public string Currency { get; set; }
-        public double Ask { get; set; }
-        public double AskCount { get; set; }
-        public double Bid { get; set; }
-        public double BidCount { get; set; }
+        public double Asks { get; set; }
+        public double Bids { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime LastChangeTime { get; set; }
     }

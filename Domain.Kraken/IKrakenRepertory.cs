@@ -13,8 +13,8 @@ namespace Domain.Kraken
 
         bool ReloadBlance();
 
-        List<BalanceTable> GetBalance();
+        List<TickerTable> GetTicker();
 
-        bool ReloadBlance();
+        bool ReloadTicker();
     }
 }

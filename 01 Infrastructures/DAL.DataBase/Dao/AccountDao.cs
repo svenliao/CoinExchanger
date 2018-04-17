@@ -22,7 +22,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "insert into Account(UID, ApiVersion, Secret,Key,CreateTime,LastChangeTime) values(@UID,@ApiVersion, @Secret,@Key,datetime('now', 'localtime'),datetime('now', 'localtime'))";
+                string sql = "insert into Account(UID, ApiVersion, Secret,Key1,Default1,CreateTime,LastChangeTime) values(@UID,@ApiVersion, @Secret,@Key,@Default,datetime('now', 'localtime'),datetime('now', 'localtime'))";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
@@ -30,6 +30,7 @@ namespace DAL.DataBase.Dao
                     cmd.Parameters.AddWithValue("@ApiVersion", obj.ApiVersion);
                     cmd.Parameters.AddWithValue("@Secret", obj.Secret);
                     cmd.Parameters.AddWithValue("@Key", obj.Key);
+                    cmd.Parameters.AddWithValue("@Default", obj.Default);
 
                     SQLiteHelper.SQLiteHelper.ExecuteNonQuery(conStr, cmd);
                 }
@@ -48,7 +49,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "UPDATE Account set UID=@UID, ApiVersion=@ApiVersion, Secret=@Secret,Key=@Key,LastChangeTime=datetime('now', 'localtime') where id=@ID";
+                string sql = "UPDATE Account set UID=@UID, ApiVersion=@ApiVersion, Secret=@Secret,Key1=@Key,Default1=@Default,LastChangeTime=datetime('now', 'localtime') where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
@@ -57,8 +58,9 @@ namespace DAL.DataBase.Dao
                     cmd.Parameters.AddWithValue("@ApiVersion", obj.ApiVersion);
                     cmd.Parameters.AddWithValue("@Secret", obj.Secret);
                     cmd.Parameters.AddWithValue("@Key", obj.Key);
+                    cmd.Parameters.AddWithValue("@Default", obj.Default);
 
-                   return SQLiteHelper.SQLiteHelper.ExecuteNonQuery(conStr, cmd);
+                    return SQLiteHelper.SQLiteHelper.ExecuteNonQuery(conStr, cmd);
                 }
             }
             catch (Exception ex)
@@ -101,7 +103,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,UID, ApiVersion, Secret,Key,CreateTime,LastChangeTime from Account";
+                string sql = "select ID,UID, ApiVersion, Secret,Key1,Default1,CreateTime,LastChangeTime from Account";
 
                 var results = new List<AccountTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -115,7 +117,8 @@ namespace DAL.DataBase.Dao
                             UID = reader["UID"].ToString(),
                             ApiVersion = int.Parse(reader["ApiVersion"].ToString()),
                             Secret = reader["Secret"].ToString(),
-                            Key = reader["Key"].ToString(),
+                            Key = reader["Key1"].ToString(),
+                            Default= int.Parse(reader["Default1"].ToString()),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
                         });
@@ -139,7 +142,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,UID, ApiVersion, Secret,Key,CreateTime,LastChangeTime from Account where uid=@uid";
+                string sql = "select ID,UID, Default1,ApiVersion, Secret,Key1,CreateTime,LastChangeTime from Account where uid=@uid";
 
                 AccountTable result = null;
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -153,8 +156,9 @@ namespace DAL.DataBase.Dao
                             ID = long.Parse(reader["id"].ToString()),
                             UID = reader["UID"].ToString(),
                             ApiVersion = int.Parse(reader["ApiVersion"].ToString()),
+                            Default = int.Parse(reader["Default1"].ToString()),
                             Secret = reader["Secret"].ToString(),
-                            Key = reader["Key"].ToString(),
+                            Key = reader["Key1"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
 
