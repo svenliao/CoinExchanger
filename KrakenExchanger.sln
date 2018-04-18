@@ -27,9 +27,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "04 Presentation\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "04 Presentation\Service\Service.csproj", "{2408BFCD-0CC3-466D-8627-7D603C77F21E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Server", "03 Applications\Exchange.Service\Application.Server.csproj", "{BCD85DA5-7562-49CE-A5E5-F908F0976793}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Server", "03 Applications\Application.Server\Application.Server.csproj", "{BCD85DA5-7562-49CE-A5E5-F908F0976793}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Kraken", "Domain.Kraken\Domain.Kraken.csproj", "{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Kraken", "02 Domains\Domain.Kraken\Domain.Kraken.csproj", "{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

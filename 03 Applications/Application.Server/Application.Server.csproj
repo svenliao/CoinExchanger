@@ -88,6 +88,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\01 Infrastructures\API.Exchange\API.Exchange.csproj">
+      <Project>{d69d7410-a76e-47c7-8292-4680f82a048a}</Project>
+      <Name>API.Exchange</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\01 Infrastructures\API.Kraken\API.Kraken.csproj">
+      <Project>{6fd7a9d6-ce6d-4b57-bebb-faaf2490811e}</Project>
+      <Name>API.Kraken</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\02 Domains\Domain.Common\Domain.Common.csproj">
       <Project>{6630cd45-9e7f-41fe-adee-a5ee625e5799}</Project>
       <Name>Domain.Common</Name>
@@ -96,7 +104,7 @@
       <Project>{ab79694e-5e90-4693-b753-152f799ce7a9}</Project>
       <Name>Domain.Exchange.Rate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Domain.Kraken\Domain.Kraken.csproj">
+    <ProjectReference Include="..\..\02 Domains\Domain.Kraken\Domain.Kraken.csproj">
       <Project>{605fb6bb-35ea-4b74-b17d-f56a98f7d91e}</Project>
       <Name>Domain.Kraken</Name>
     </ProjectReference>
