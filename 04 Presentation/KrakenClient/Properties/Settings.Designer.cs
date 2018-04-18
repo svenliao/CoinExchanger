@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Client.Properties {
+namespace KrakenClient.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -81,6 +81,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\ef3aa3ac3eac0667d5c2c59d1a57d495.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Infrastructures", "01 Infrastructures", "{AF869DFE-7C99-4E43-9BC4-CD9D7DBA66DE}"
 EndProject
@@ -23,13 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Common", "02 Domains
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Exchange.Rate", "02 Domains\Domain.Exchange.Rate\Domain.Exchange.Rate.csproj", "{AB79694E-5E90-4693-B753-152F799CE7A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "04 Presentation\Client\Client.csproj", "{C941FDE6-0C50-43AC-8CF3-5C820A9667ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "04 Presentation\Service\Service.csproj", "{2408BFCD-0CC3-466D-8627-7D603C77F21E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Server", "03 Applications\Application.Server\Application.Server.csproj", "{BCD85DA5-7562-49CE-A5E5-F908F0976793}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Kraken", "02 Domains\Domain.Kraken\Domain.Kraken.csproj", "{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrakenClient", "04 Presentation\KrakenClient\KrakenClient.csproj", "{2EE3B165-59AC-41ED-8CF9-C08736990B00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,14 +59,6 @@ Global
 		{AB79694E-5E90-4693-B753-152F799CE7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB79694E-5E90-4693-B753-152F799CE7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB79694E-5E90-4693-B753-152F799CE7A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C941FDE6-0C50-43AC-8CF3-5C820A9667ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C941FDE6-0C50-43AC-8CF3-5C820A9667ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C941FDE6-0C50-43AC-8CF3-5C820A9667ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C941FDE6-0C50-43AC-8CF3-5C820A9667ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2408BFCD-0CC3-466D-8627-7D603C77F21E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2408BFCD-0CC3-466D-8627-7D603C77F21E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2408BFCD-0CC3-466D-8627-7D603C77F21E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2408BFCD-0CC3-466D-8627-7D603C77F21E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BCD85DA5-7562-49CE-A5E5-F908F0976793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BCD85DA5-7562-49CE-A5E5-F908F0976793}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCD85DA5-7562-49CE-A5E5-F908F0976793}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,6 +67,10 @@ Global
 		{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE3B165-59AC-41ED-8CF9-C08736990B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE3B165-59AC-41ED-8CF9-C08736990B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE3B165-59AC-41ED-8CF9-C08736990B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE3B165-59AC-41ED-8CF9-C08736990B00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,10 +81,9 @@ Global
 		{D69D7410-A76E-47C7-8292-4680F82A048A} = {AF869DFE-7C99-4E43-9BC4-CD9D7DBA66DE}
 		{6630CD45-9E7F-41FE-ADEE-A5EE625E5799} = {30F74C0C-8BF2-4BD3-ABDA-DFA795B79220}
 		{AB79694E-5E90-4693-B753-152F799CE7A9} = {30F74C0C-8BF2-4BD3-ABDA-DFA795B79220}
-		{C941FDE6-0C50-43AC-8CF3-5C820A9667ED} = {4ED1A2CA-A759-4467-A8FD-103A86DE02B1}
-		{2408BFCD-0CC3-466D-8627-7D603C77F21E} = {4ED1A2CA-A759-4467-A8FD-103A86DE02B1}
 		{BCD85DA5-7562-49CE-A5E5-F908F0976793} = {107FDD6D-9728-4835-B0C4-7DBAFF13D7AB}
 		{605FB6BB-35EA-4B74-B17D-F56A98F7D91E} = {30F74C0C-8BF2-4BD3-ABDA-DFA795B79220}
+		{2EE3B165-59AC-41ED-8CF9-C08736990B00} = {4ED1A2CA-A759-4467-A8FD-103A86DE02B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0925585F-17E3-4C27-8E8E-CD5E14405205}
