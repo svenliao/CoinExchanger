@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Infrastructures", "01 Infrastructures", "{AF869DFE-7C99-4E43-9BC4-CD9D7DBA66DE}"
 EndProject
@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "04 Presentation\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "04 Presentation\Service\Service.csproj", "{2408BFCD-0CC3-466D-8627-7D603C77F21E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchange.Service", "03 Applications\Exchange.Service\Exchange.Service.csproj", "{BCD85DA5-7562-49CE-A5E5-F908F0976793}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Server", "03 Applications\Exchange.Service\Application.Server.csproj", "{BCD85DA5-7562-49CE-A5E5-F908F0976793}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Kraken", "Domain.Kraken\Domain.Kraken.csproj", "{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}"
 EndProject

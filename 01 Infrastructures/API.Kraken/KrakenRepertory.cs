@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Jayrock.Json;
+using System.Threading;
 using Jayrock.Json.Conversion;
 using Domain.Common.DataBaseModels;
 using Domain.Kraken;
@@ -109,5 +110,51 @@ namespace API.Kraken
             return true;
         }
 
+        public List<BookingTable> GetBooking(string coin)
+        {
+            var dao = new BookingTableDao();
+            return dao.Select(coin);
+        }
+
+        public bool ReloadBooking()
+        {
+            var bookings = new List<BookingTable>();
+            foreach (var aPair in pairs)
+            {
+                var depth = client.GetOrderBook(aPair, 5);
+
+                var res = depth["result"] as JsonObject;
+                var xrp = res[aPair] as JsonObject;
+                var asks = xrp["asks"].ToString();
+                var bids = xrp["bids"].ToString();
+
+                int spiltIndex = (int)Math.Ceiling((double)aPair.Length / 2);
+                string coin = aPair.Substring(0, spiltIndex);
+                string currency = aPair.Substring(spiltIndex, aPair.Length - spiltIndex);
+                if (coin.StartsWith("X"))
+                {
+                    coin = coin.Substring(1);
+                }
+                if (currency.StartsWith("Z"))
+                {
+                    currency = currency.Substring(1);
+                }
+
+                var booking = new BookingTable()
+                {
+                    Pair = aPair,
+                    Coin = coin.Replace("XBT", "BTC"),
+                    Currency = currency,
+                    Asks = asks,
+                    Bids = bids
+                };
+                bookings.Add(booking);                
+            }
+
+            var dao = new BookingTableDao();
+            dao.InsertOrUpdate(bookings);
+
+            return true;
+        }
     }
 }

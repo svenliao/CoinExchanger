@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppTest.cs" />
     <Compile Include="KrakenTest.cs" />
     <Compile Include="ExchangeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +118,10 @@
     <ProjectReference Include="..\02 Domains\Domain.Exchange.Rate\Domain.Exchange.Rate.csproj">
       <Project>{ab79694e-5e90-4693-b753-152f799ce7a9}</Project>
       <Name>Domain.Exchange.Rate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\03 Applications\Exchange.Service\Application.Server.csproj">
+      <Project>{bcd85da5-7562-49ce-a5e5-f908f0976793}</Project>
+      <Name>Application.Server</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain.Kraken\Domain.Kraken.csproj">
       <Project>{605fb6bb-35ea-4b74-b17d-f56a98f7d91e}</Project>

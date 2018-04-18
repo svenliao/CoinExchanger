@@ -16,5 +16,9 @@ namespace Domain.Kraken
         List<TickerTable> GetTicker();
 
         bool ReloadTicker();
+
+        List<BookingTable> GetBooking(string coin);
+
+        bool ReloadBooking();
     }
 }

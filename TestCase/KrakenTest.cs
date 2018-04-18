@@ -32,9 +32,9 @@ namespace TestCase
         {
             KrakenRepertory client = new KrakenRepertory();
 
-            var ticker = client.GetBalance();
-            Assert.IsNotNull(ticker, "Balance error.");
-            Assert.IsTrue(ticker.Count > 0, "Balance emty");
+            var balance = client.GetBalance();
+            Assert.IsNotNull(balance, "Balance error.");
+            Assert.IsTrue(balance.Count > 0, "Balance emty");
         }
 
         [TestMethod]
@@ -43,6 +43,25 @@ namespace TestCase
             IKrakenRepertory client = new KrakenRepertory();
 
             var ticker = client.ReloadBlance();
+            Assert.IsTrue(ticker, "Reload Balance error");
+        }
+
+        [TestMethod]
+        public void GetBookings()
+        {
+            KrakenRepertory client = new KrakenRepertory();
+
+            var ticker = client.GetBooking("BTC");
+            Assert.IsNotNull(ticker, "Balance error.");
+            Assert.IsTrue(ticker.Count > 0, "Balance emty");
+        }
+
+        [TestMethod]
+        public void ReloadBookings()
+        {
+            IKrakenRepertory client = new KrakenRepertory();
+
+            var ticker = client.ReloadBooking();
             Assert.IsTrue(ticker, "Reload Balance error");
         }
     }

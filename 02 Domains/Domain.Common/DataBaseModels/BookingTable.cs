@@ -14,8 +14,8 @@ namespace Domain.Common.DataBaseModels
 
         public string Coin { get; set; }
         public string Currency { get; set; }
-        public double Asks { get; set; }
-        public double Bids { get; set; }
+        public string Asks { get; set; }
+        public string Bids { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime LastChangeTime { get; set; }
     }

@@ -115,8 +115,8 @@ namespace DAL.DataBase.Dao
                         {
                             ID = long.Parse(reader["id"].ToString()),
                             Pair = reader["Pair"].ToString(),
-                            Asks = double.Parse(reader["Asks"].ToString()),
-                            Bids = double.Parse(reader["Bids"].ToString()),
+                            Asks = reader["Asks"].ToString(),
+                            Bids = reader["Bids"].ToString(),
                             Coin = reader["Coin"].ToString(),
                             Currency=reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
@@ -155,8 +155,8 @@ namespace DAL.DataBase.Dao
                         {
                             ID = long.Parse(reader["id"].ToString()),
                             Pair = reader["Pair"].ToString(),
-                            Asks = double.Parse(reader["Asks"].ToString()),
-                            Bids = double.Parse(reader["Bids"].ToString()),
+                            Asks = reader["Asks"].ToString(),
+                            Bids = reader["Bids"].ToString(),
                             Coin = reader["Coin"].ToString(),
                             Currency = reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),

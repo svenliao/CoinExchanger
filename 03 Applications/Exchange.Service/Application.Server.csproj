@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6630CD45-9E7F-41FE-ADEE-A5EE625E5799}</ProjectGuid>
+    <ProjectGuid>{BCD85DA5-7562-49CE-A5E5-F908F0976793}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain.Common</RootNamespace>
-    <AssemblyName>Domain.Common</AssemblyName>
+    <RootNamespace>Application.Server</RootNamespace>
+    <AssemblyName>Application.Server</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,10 @@
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Unity.5.8.5\lib\net46\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentScheduler, Version=5.3.0.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentScheduler.5.3.0\lib\net40\FluentScheduler.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -72,19 +76,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBaseModels\AccountTable.cs" />
-    <Compile Include="DataBaseModels\BookingTable.cs" />
-    <Compile Include="DataBaseModels\TickerTable.cs" />
-    <Compile Include="DataBaseModels\BalanceTable.cs" />
-    <Compile Include="DataBaseModels\ExchangeRateTable.cs" />
-    <Compile Include="DataBaseModels\LogTable.cs" />
-    <Compile Include="Ioc\IocFactory.cs" />
+    <Compile Include="Jobs\BalanceJob.cs" />
+    <Compile Include="Jobs\BookingJob.cs" />
+    <Compile Include="Jobs\ExchangeRateJob.cs" />
+    <Compile Include="Jobs\KrakenRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repertory\IDataRepertory.cs" />
-    <Compile Include="Repertory\ILogRepertory.cs" />
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="Jobs\TickerJob.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\02 Domains\Domain.Common\Domain.Common.csproj">
+      <Project>{6630cd45-9e7f-41fe-adee-a5ee625e5799}</Project>
+      <Name>Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\02 Domains\Domain.Exchange.Rate\Domain.Exchange.Rate.csproj">
+      <Project>{ab79694e-5e90-4693-b753-152f799ce7a9}</Project>
+      <Name>Domain.Exchange.Rate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain.Kraken\Domain.Kraken.csproj">
+      <Project>{605fb6bb-35ea-4b74-b17d-f56a98f7d91e}</Project>
+      <Name>Domain.Kraken</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
