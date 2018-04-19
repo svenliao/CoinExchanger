@@ -53,6 +53,21 @@ namespace KrakenClient
         }
     }
 
+    public class BookingJob : IJob
+    {
+        public static event JobNotifyEvent ExcuteEvent;
+
+        public void Execute()
+        {
+            var doa = new BookingTableDao();
+            var data = doa.Select();
+            if (ExcuteEvent != null)
+            {
+                ExcuteEvent(data);
+            }
+        }
+    }
+
     public class ExchangeRateJob : IJob
     {
         public static event JobNotifyEvent ExcuteEvent;
