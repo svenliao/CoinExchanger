@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Infrastructures", "01 Infrastructures", "{AF869DFE-7C99-4E43-9BC4-CD9D7DBA66DE}"
 EndProject
@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Common", "02 Domains
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Exchange.Rate", "02 Domains\Domain.Exchange.Rate\Domain.Exchange.Rate.csproj", "{AB79694E-5E90-4693-B753-152F799CE7A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Server", "03 Applications\Application.Server\Application.Server.csproj", "{BCD85DA5-7562-49CE-A5E5-F908F0976793}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Server", "03 Applications\Application.Server\Applications.Server.csproj", "{BCD85DA5-7562-49CE-A5E5-F908F0976793}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Kraken", "02 Domains\Domain.Kraken\Domain.Kraken.csproj", "{605FB6BB-35EA-4B74-B17D-F56A98F7D91E}"
 EndProject

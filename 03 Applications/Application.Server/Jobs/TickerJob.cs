@@ -8,7 +8,7 @@ using Domain.Common.Ioc;
 using FluentScheduler;
 using Unity;
 
-namespace Application.Server.Jobs
+namespace Applications.Server.Jobs
 {
     public class TickerJob : IJob
     {

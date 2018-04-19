@@ -7,27 +7,40 @@ using System.Threading;
 using Unity;
 using FluentScheduler;
 
-namespace Application.Server
+namespace Applications.Server
 {
     public class AppHost : IDisposable
     {
+        public ServerStatu Statu { get; private set; }
         public void Init()
         {
+            Statu = ServerStatu.INIT;
         }
 
         public void Start()
         {
             JobManager.Initialize(new KrakenRegistry());
+            Statu = ServerStatu.RUNING;
         }
 
         public void Stop()
         {
             JobManager.RemoveAllJobs();
+            Statu = ServerStatu.PENDING;
         }
 
         public void Dispose()
         {
             JobManager.RemoveAllJobs();
+            Statu = ServerStatu.CLOSED;
         }
+    }
+
+    public enum ServerStatu
+    {
+        INIT,
+        RUNING,
+        PENDING,
+        CLOSED
     }
 }

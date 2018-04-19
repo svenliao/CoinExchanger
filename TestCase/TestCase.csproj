@@ -123,9 +123,9 @@
       <Project>{605fb6bb-35ea-4b74-b17d-f56a98f7d91e}</Project>
       <Name>Domain.Kraken</Name>
     </ProjectReference>
-    <ProjectReference Include="..\03 Applications\Application.Server\Application.Server.csproj">
+    <ProjectReference Include="..\03 Applications\Application.Server\Applications.Server.csproj">
       <Project>{bcd85da5-7562-49ce-a5e5-f908f0976793}</Project>
-      <Name>Application.Server</Name>
+      <Name>Applications.Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
