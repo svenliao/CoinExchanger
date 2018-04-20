@@ -78,6 +78,8 @@
     <Compile Include="DataBaseModels\BalanceTable.cs" />
     <Compile Include="DataBaseModels\ExchangeRateTable.cs" />
     <Compile Include="DataBaseModels\LogTable.cs" />
+    <Compile Include="DataBaseModels\OrderTable.cs" />
+    <Compile Include="DataBaseModels\TradeTable.cs" />
     <Compile Include="Ioc\IocFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repertory\IDataRepertory.cs" />

@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppTest.cs" />
+    <Compile Include="KrakenUserDataTest.cs" />
     <Compile Include="KrakenTest.cs" />
     <Compile Include="ExchangeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
