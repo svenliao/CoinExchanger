@@ -19,7 +19,6 @@ namespace Domain.Common.DataBaseModels
         /// </summary>
         public string LimitType { get; set; }
         public string Status { get; set; }
-        public string MainTxid { get; set; }
         public string Pair { get; set; }
         public string Coin { get; set; }
         public string Currency { get; set; }

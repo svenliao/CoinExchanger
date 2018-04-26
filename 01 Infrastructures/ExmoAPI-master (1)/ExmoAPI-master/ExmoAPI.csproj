@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A868170E-E9E0-4120-AF21-82341D07CD5E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExmoAPI</RootNamespace>
+    <AssemblyName>ExmoAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>.\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authenticated_API\Classes\COrderCancel.cs" />
+    <Compile Include="Authenticated_API\Classes\COrderCreate.cs" />
+    <Compile Include="Authenticated_API\Classes\COrderTrades.cs" />
+    <Compile Include="Authenticated_API\Classes\CRequiredAmount.cs" />
+    <Compile Include="Authenticated_API\Classes\CUserInfo.cs" />
+    <Compile Include="Authenticated_API\Classes\CUserOpenOrders.cs" />
+    <Compile Include="Authenticated_API\Classes\CUserTrades.cs" />
+    <Compile Include="Authenticated_API\Classes\CUserCancelledOrders.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IOrderCancel.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IOrderCreate.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IOrderTrades.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IRequiredAmount.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IUserCancelledOrders.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IUserInfo.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IUserTrades.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IUserOpenOrders.cs" />
+    <Compile Include="Generic\ExmoHelperClasses.cs" />
+    <Compile Include="Generic\ExmoApi.cs" />
+    <Compile Include="Generic\ExmoHelperInterfaces.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Public_API\Classes\CCurrency.cs" />
+    <Compile Include="Public_API\Classes\COrderBook.cs" />
+    <Compile Include="Public_API\Classes\CPairSettings.cs" />
+    <Compile Include="Public_API\Classes\CTicker.cs" />
+    <Compile Include="Public_API\Classes\CTrades.cs" />
+    <Compile Include="Public_API\Interfaces\IOrderBook.cs" />
+    <Compile Include="Public_API\Interfaces\IPairSettings.cs" />
+    <Compile Include="Public_API\Interfaces\ITicker.cs" />
+    <Compile Include="Public_API\Interfaces\ITrades.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
