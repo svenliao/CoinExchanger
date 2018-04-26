@@ -9,7 +9,7 @@ namespace Domain.Common.DataBaseModels
     public class BookingTable
     {
         public long ID { get; set; }
-
+        public PlatformTable Platform { get; set; }
         public string Pair { get; set; }
 
         public string Coin { get; set; }

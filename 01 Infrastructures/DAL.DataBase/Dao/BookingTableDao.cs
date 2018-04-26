@@ -22,12 +22,13 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "insert into Booking(Pair, Coin, Currency,Asks,Bids,CreateTime,LastChangeTime) values(@Pair,@Coin, @Currency,@Asks,@Bids,datetime('now', 'localtime'),datetime('now', 'localtime'))";
+                string sql = "insert into Booking(Pair,PlatformID, Coin, Currency,Asks,Bids,CreateTime,LastChangeTime) values(@Pair,@PlatformID,@Coin, @Currency,@Asks,@Bids,datetime('now', 'localtime'),datetime('now', 'localtime'))";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@Asks", obj.Asks);
                     cmd.Parameters.AddWithValue("@Bids", obj.Bids);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@Coin", obj.Coin);
                     cmd.Parameters.AddWithValue("@Currency", obj.Currency);
                     cmd.Parameters.AddWithValue("@Pair", obj.Pair);
@@ -49,11 +50,12 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "UPDATE Booking set Asks=@Asks, Bids=@Bids, Coin=@Coin,Currency=@Currency,Pair=@Pair,LastChangeTime=datetime('now', 'localtime') where id=@ID";
+                string sql = "UPDATE Booking set Asks=@Asks,PlatformID=@PlatformID, Bids=@Bids, Coin=@Coin,Currency=@Currency,Pair=@Pair,LastChangeTime=datetime('now', 'localtime') where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@ID", obj.ID);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@Asks", obj.Asks);
                     cmd.Parameters.AddWithValue("@Bids", obj.Bids);
                     cmd.Parameters.AddWithValue("@Coin", obj.Coin);
@@ -103,7 +105,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,Pair, Coin, Currency,Asks,Bids,CreateTime,LastChangeTime from Booking";
+                string sql = "select Booking.ID,PlatformID,Name1,Url,Pair, Coin, Currency,Asks,Bids,Booking.CreateTime,Booking.LastChangeTime from Booking,Platform where Booking.PlatformID=Platform.ID";
 
                 var results = new List<BookingTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -121,6 +123,12 @@ namespace DAL.DataBase.Dao
                             Currency=reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
+                            Platform = new PlatformTable()
+                            {
+                                ID = long.Parse(reader["PlatformID"].ToString()),
+                                Name = reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         });
                     }
                 }
@@ -142,7 +150,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,Pair, Coin, Currency,Asks,Bids,CreateTime,LastChangeTime from Booking where coin=@coin";
+                string sql = "select Booking.ID,PlatformID,Name1,Url,Pair, Coin, Currency,Asks,Bids,Booking.CreateTime,Booking.LastChangeTime from Booking,Platform where Booking.PlatformID=Platform.ID and Coin=@Coin";
 
                 List<BookingTable> results = new List<BookingTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -161,6 +169,12 @@ namespace DAL.DataBase.Dao
                             Currency = reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
+                            Platform = new PlatformTable()
+                            {
+                                ID = long.Parse(reader["PlatformID"].ToString()),
+                                Name = reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         });
                     }
                 }

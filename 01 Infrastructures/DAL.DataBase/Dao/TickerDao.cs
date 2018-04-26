@@ -22,11 +22,12 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "insert into Tickers(Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime) values(@Pair,@AskCount,@BidCount,@Coin, @Currency,@Ask,@Bid,datetime('now', 'localtime'),datetime('now', 'localtime'))";
+                string sql = "insert into Tickers(Pair,PlatformID,AskCount,BidCount, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime) values(@Pair,@PlatformID,@AskCount,@BidCount,@Coin, @Currency,@Ask,@Bid,datetime('now', 'localtime'),datetime('now', 'localtime'))";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@Ask", obj.Ask);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@AskCount", obj.AskCount);
                     cmd.Parameters.AddWithValue("@BidCount", obj.BidCount);
                     cmd.Parameters.AddWithValue("@Bid", obj.Bid);
@@ -51,11 +52,12 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "UPDATE Tickers set Ask=@Ask,AskCount=@AskCount, Bid=@Bid,BidCount=@BidCount, Coin=@Coin,Currency=@Currency,Pair=@Pair,LastChangeTime=datetime('now', 'localtime') where id=@ID";
+                string sql = "UPDATE Tickers set PlatformID=@PlatformID,Ask=@Ask,AskCount=@AskCount, Bid=@Bid,BidCount=@BidCount, Coin=@Coin,Currency=@Currency,Pair=@Pair,LastChangeTime=datetime('now', 'localtime') where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@ID", obj.ID);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@AskCount", obj.AskCount);
                     cmd.Parameters.AddWithValue("@BidCount", obj.BidCount);
                     cmd.Parameters.AddWithValue("@Ask", obj.Ask);
@@ -77,7 +79,7 @@ namespace DAL.DataBase.Dao
         /// <summary>
         /// TickerTable
         /// </summary>
-        /// <param name="BalanceTable">TickerTable</param>
+        /// <param name="TickerTable">TickerTable</param>
         /// <returns>状态代码</returns>
         public int Delete(TickerTable obj)
         {
@@ -107,7 +109,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime from Tickers";
+                string sql = "select Tickers.ID,PlatformID,Name1,Url,Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,Tickers.CreateTime,Tickers.LastChangeTime from Tickers,Platform where Tickers.PlatformID=Platform.ID";
 
                 var results = new List<TickerTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -127,6 +129,12 @@ namespace DAL.DataBase.Dao
                             Currency=reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
+                            Platform = new PlatformTable()
+                            {
+                                ID = long.Parse(reader["PlatformID"].ToString()),
+                                Name = reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         });
                     }
                 }
@@ -148,7 +156,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,CreateTime,LastChangeTime from Tickers where coin=@coin";
+                string sql = "select Tickers.ID,PlatformID,Name1,Url,Pair,AskCount,BidCount, Coin, Currency,Ask,Bid,Tickers.CreateTime,Tickers.LastChangeTime from Tickers,Platform where Tickers.PlatformID=Platform.ID and coin=@coin";
 
                 List<TickerTable> results = new List<TickerTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -169,6 +177,12 @@ namespace DAL.DataBase.Dao
                             Currency = reader["Currency"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
+                            Platform = new PlatformTable()
+                            {
+                                ID = long.Parse(reader["PlatformID"].ToString()),
+                                Name = reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         });
                     }
                 }

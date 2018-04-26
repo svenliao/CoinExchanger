@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\BookingTableDao.cs" />
+    <Compile Include="Dao\PlatformDao.cs" />
     <Compile Include="Dao\TickerDao.cs" />
     <Compile Include="Dao\BalanceDao.cs" />
     <Compile Include="Dao\AccountDao.cs" />

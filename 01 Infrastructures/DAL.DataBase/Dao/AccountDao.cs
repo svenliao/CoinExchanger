@@ -22,11 +22,12 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "insert into Account(UID, ApiVersion, Secret,Key1,Default1,CreateTime,LastChangeTime) values(@UID,@ApiVersion, @Secret,@Key,@Default,datetime('now', 'localtime'),datetime('now', 'localtime'))";
+                string sql = "insert into Account(UID, PlatformID,ApiVersion, Secret,Key1,Default1,CreateTime,LastChangeTime) values(@UID,@PlatformID,@ApiVersion, @Secret,@Key,@Default,datetime('now', 'localtime'),datetime('now', 'localtime'))";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@UID", obj.UID);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@ApiVersion", obj.ApiVersion);
                     cmd.Parameters.AddWithValue("@Secret", obj.Secret);
                     cmd.Parameters.AddWithValue("@Key", obj.Key);
@@ -49,12 +50,13 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "UPDATE Account set UID=@UID, ApiVersion=@ApiVersion, Secret=@Secret,Key1=@Key,Default1=@Default,LastChangeTime=datetime('now', 'localtime') where id=@ID";
+                string sql = "UPDATE Account set UID=@UID,PlatformID=@PlatformID, ApiVersion=@ApiVersion, Secret=@Secret,Key1=@Key,Default1=@Default,LastChangeTime=datetime('now', 'localtime') where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@ID", obj.ID);
                     cmd.Parameters.AddWithValue("@UID", obj.UID);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@ApiVersion", obj.ApiVersion);
                     cmd.Parameters.AddWithValue("@Secret", obj.Secret);
                     cmd.Parameters.AddWithValue("@Key", obj.Key);
@@ -103,7 +105,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,UID, ApiVersion, Secret,Key1,Default1,CreateTime,LastChangeTime from Account";
+                string sql = "select Account.ID,UID,PlatformID,Name1,Url, ApiVersion, Secret,Key1,Default1,Account.CreateTime,Account.LastChangeTime from Account,Platform where account.PlatformID=Platform.ID";
 
                 var results = new List<AccountTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -121,6 +123,12 @@ namespace DAL.DataBase.Dao
                             Default= int.Parse(reader["Default1"].ToString()),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
+                            Platform=new PlatformTable()
+                            {
+                                ID= long.Parse(reader["PlatformID"].ToString()),
+                                Name= reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         });
                     }
                 }
@@ -142,7 +150,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,UID, Default1,ApiVersion, Secret,Key1,CreateTime,LastChangeTime from Account where uid=@uid";
+                string sql = "select Account.ID,UID,PlatformID,Name1,Url, Default1,ApiVersion, Secret,Key1,Account.CreateTime,Account.LastChangeTime  from Account,Platform where account.PlatformID=Platform.ID and uid=@uid";
 
                 AccountTable result = null;
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -161,7 +169,12 @@ namespace DAL.DataBase.Dao
                             Key = reader["Key1"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
-
+                            Platform = new PlatformTable()
+                            {
+                                ID = long.Parse(reader["PlatformID"].ToString()),
+                                Name = reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         };
                     }
                 }

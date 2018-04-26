@@ -22,11 +22,12 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "insert into Balance(UID, Coin, Amount,CreateTime,LastChangeTime) values(@UID,@Coin, @Amount,datetime('now', 'localtime'),datetime('now', 'localtime'))";
+                string sql = "insert into Balance(UID,PlatformID, Coin, Amount,CreateTime,LastChangeTime) values(@UID,@PlatformID,@Coin, @Amount,datetime('now', 'localtime'),datetime('now', 'localtime'))";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@UID", obj.UID);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@Coin", obj.Coin);
                     cmd.Parameters.AddWithValue("@Amount", obj.Amount);
 
@@ -47,12 +48,13 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "UPDATE Balance set UID=@UID, Coin=@Coin, Amount=@Amount,LastChangeTime=datetime('now', 'localtime') where id=@ID";
+                string sql = "UPDATE Balance set UID=@UID,PlatformID=@PlatformID, Coin=@Coin, Amount=@Amount,LastChangeTime=datetime('now', 'localtime') where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {
                     cmd.Parameters.AddWithValue("@ID", obj.ID);
                     cmd.Parameters.AddWithValue("@UID", obj.UID);
+                    cmd.Parameters.AddWithValue("@PlatformID", obj.Platform.ID);
                     cmd.Parameters.AddWithValue("@Coin", obj.Coin);
                     cmd.Parameters.AddWithValue("@Amount", obj.Amount);
 
@@ -99,7 +101,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,UID, Coin, Amount,CreateTime,LastChangeTime from Balance";
+                string sql = "select Balance.ID,UID,PlatformID,Name1,Url,Coin, Amount,Balance.CreateTime,Balance.LastChangeTime from Balance,Platform where Balance.PlatformID=Platform.ID";
 
                 var results = new List<BalanceTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -115,6 +117,12 @@ namespace DAL.DataBase.Dao
                             Coin = reader["Coin"].ToString(),                          
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
+                            Platform = new PlatformTable()
+                            {
+                                ID = long.Parse(reader["PlatformID"].ToString()),
+                                Name = reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         });
                     }
                 }
@@ -136,7 +144,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "select ID,UID, Coin, Amount,CreateTime,LastChangeTime from Balance where uid=@uid";
+                string sql = "select Balance.ID,UID,PlatformID,Name1,Url, Coin, Amount,Balance.CreateTime,Balance.LastChangeTime from Balance,Platform where Balance.PlatformID=Platform.ID and uid=@uid";
 
                 List<BalanceTable> results = new List<BalanceTable>();
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
@@ -153,7 +161,12 @@ namespace DAL.DataBase.Dao
                             Coin = reader["Coin"].ToString(),
                             CreateTime = DateTime.Parse(reader["CreateTime"].ToString()),
                             LastChangeTime = DateTime.Parse(reader["LastChangeTime"].ToString()),
-
+                            Platform = new PlatformTable()
+                            {
+                                ID = long.Parse(reader["PlatformID"].ToString()),
+                                Name = reader["Name1"].ToString(),
+                                Url = reader["Url"].ToString()
+                            }
                         });
                     }
                 }

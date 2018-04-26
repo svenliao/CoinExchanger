@@ -17,22 +17,35 @@
 
     public class Client : IDisposable
     {
-        string _url= "https://api.kraken.com";
+        string _url;
         int _version;
         string _key;
         string _secret;
         RateGate _rateGate;
+        PlatformTable _platform;
 
+        public PlatformTable Platform
+        {
+            get
+            {
+                if(_platform==null)
+                {
+                    var dao = new PlatformDao();
+                    _platform = dao.Select("Kraken").FirstOrDefault();
+                }
+                return _platform;
+            }
+        }
         public Client()
         {
             var dao = new AccountDao();
             var account = dao.Select().Find(a => a.Default > 0);
 
+            _url = Platform.Url;
             _version = account.ApiVersion;
             _key = account.Key;
             _secret = account.Secret;
             _rateGate = new RateGate(1, TimeSpan.FromSeconds(5));
-            
         }
         
         public void Dispose()

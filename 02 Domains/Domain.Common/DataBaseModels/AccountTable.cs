@@ -10,6 +10,7 @@ namespace Domain.Common.DataBaseModels
     {
         public long ID { get; set; }   
         public string UID { get; set; }
+        public PlatformTable Platform { get; set; }
         public int ApiVersion { get; set; }
         public string Secret { get; set; }
         public string Key { get; set; }

@@ -14,12 +14,19 @@ namespace API.Kraken
 {
     public class KrakenRepertory : IKrakenRepertory
     {
-        private Client client = new Client();
-        private Broker broker = new Broker();
+        Client client;
+        Broker broker;
+        PlatformTable platform;
 
         private string[] pairs = { "XXBTZEUR","XXBTZUSD","BCHEUR","BCHUSD","EOSEUR","EOSUSD","XETCZEUR","XETCZUSD","XETHZEUR",
                     "XETHZUSD","XLTCZEUR","XLTCZUSD","XXLMZEUR","XXLMZUSD","XXMRZEUR","XXMRZUSD","XXRPZEUR","XXRPZUSD"};
 
+        public KrakenRepertory()
+        {
+            client = new Client();
+            broker = new Broker();
+            platform = client.Platform;
+        }
         public List<BalanceTable> GetBalance()
         {
             var dao = new BalanceDao();
@@ -50,6 +57,7 @@ namespace API.Kraken
                 {
                     UID = uid,
                     Coin = coin,
+                    Platform=this.platform,
                     Amount = double.Parse(item.Value.ToString())
                 };
 
@@ -95,6 +103,7 @@ namespace API.Kraken
                 ticker.Currency = currency;
                 ticker.Coin = coin.Replace("XBT", "BTC");
                 ticker.Pair = item.Name;
+                ticker.Platform = this.platform;
 
                 JsonObject o = item.Value as JsonObject;
                 ticker.Ask = double.Parse((o["a"] as JsonArray)[0].ToString());
@@ -145,6 +154,7 @@ namespace API.Kraken
                     Pair = aPair,
                     Coin = coin.Replace("XBT", "BTC"),
                     Currency = currency,
+                    Platform = this.platform,
                     Asks = asks,
                     Bids = bids
                 };

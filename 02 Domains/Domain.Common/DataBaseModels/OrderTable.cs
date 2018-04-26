@@ -9,6 +9,7 @@ namespace Domain.Common.DataBaseModels
     public class OrderTable
     {
         public long ID { get; set; }
+        public PlatformTable Platform { get; set; }
         public string OrderTxid { get; set; }
         /// <summary>
         /// Buy/Sell

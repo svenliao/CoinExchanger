@@ -9,6 +9,7 @@ namespace Domain.Common.DataBaseModels
     public class TradeTable
     {
         public long ID { get; set; }
+        public PlatformTable Platform { get; set; }
         public string TransactionID { get; set; }
         public DateTime Executed { get; set; }
         public string OrderTxid { get; set; }
