@@ -30,7 +30,9 @@ namespace API.Kraken
         public List<BalanceTable> GetBalance()
         {
             var dao = new BalanceDao();
-            return dao.Select();
+            return dao.Select()
+                .Where(b=>b.Platform.ID==platform.ID)
+                .ToList();
         }
 
         public bool ReloadBlance()
@@ -50,7 +52,9 @@ namespace API.Kraken
                     coin = coin.Substring(1);
                 }
 
-                var account = new AccountDao().Select().Find(a => a.Default > 0);
+                var account = new AccountDao().Select()
+                    .Find(a => a.Default > 0||a.Platform.ID==platform.ID);
+
                 string uid = account.UID;
 
                 BalanceTable balance = new BalanceTable()
@@ -73,7 +77,9 @@ namespace API.Kraken
         public List<TickerTable> GetTicker()
         {
             var dao = new TickerDao();
-            return dao.Select();
+            return dao.Select()
+                .Where(b => b.Platform.ID == platform.ID)
+                .ToList();
         }
 
         public bool ReloadTicker()
@@ -122,7 +128,9 @@ namespace API.Kraken
         public List<BookingTable> GetBooking(string coin)
         {
             var dao = new BookingTableDao();
-            return dao.Select(coin);
+            return dao.Select(coin)
+                .Where(b => b.Platform.ID == platform.ID)
+                .ToList();
         }
 
         public bool ReloadBooking()

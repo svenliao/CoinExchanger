@@ -39,7 +39,7 @@
         public Client()
         {
             var dao = new AccountDao();
-            var account = dao.Select().Find(a => a.Default > 0);
+            var account = dao.Select().Find(a => a.Default > 0 && a.Platform.ID == Platform.ID);
 
             _url = Platform.Url;
             _version = account.ApiVersion;

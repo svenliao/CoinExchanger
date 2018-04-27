@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppTest.cs" />
+    <Compile Include="ExmoTest.cs" />
     <Compile Include="KrakenUserDataTest.cs" />
     <Compile Include="KrakenTest.cs" />
     <Compile Include="ExchangeTest.cs" />
@@ -103,6 +104,10 @@
     <ProjectReference Include="..\01 Infrastructures\API.Exchange\API.Exchange.csproj">
       <Project>{d69d7410-a76e-47c7-8292-4680f82a048a}</Project>
       <Name>API.Exchange</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01 Infrastructures\API.Exmo\API.Exmo.csproj">
+      <Project>{49c7079d-c6f8-498d-8498-100a01e9471d}</Project>
+      <Name>API.Exmo</Name>
     </ProjectReference>
     <ProjectReference Include="..\01 Infrastructures\API.Kraken\API.Kraken.csproj">
       <Project>{6fd7a9d6-ce6d-4b57-bebb-faaf2490811e}</Project>
@@ -119,6 +124,10 @@
     <ProjectReference Include="..\02 Domains\Domain.Exchange.Rate\Domain.Exchange.Rate.csproj">
       <Project>{ab79694e-5e90-4693-b753-152f799ce7a9}</Project>
       <Name>Domain.Exchange.Rate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\02 Domains\Domain.Exmo\Domain.Exmo.csproj">
+      <Project>{dec2def5-0c8d-4fbb-86e5-3a1983de6af0}</Project>
+      <Name>Domain.Exmo</Name>
     </ProjectReference>
     <ProjectReference Include="..\02 Domains\Domain.Kraken\Domain.Kraken.csproj">
       <Project>{605fb6bb-35ea-4b74-b17d-f56a98f7d91e}</Project>

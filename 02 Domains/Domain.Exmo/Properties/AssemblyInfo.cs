@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("API.Exmo")]
+[assembly: AssemblyTitle("Domain.Exmo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("API.Exmo")]
+[assembly: AssemblyProduct("Domain.Exmo")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("49c7079d-c6f8-498d-8498-100a01e9471d")]
+[assembly: Guid("dec2def5-0c8d-4fbb-86e5-3a1983de6af0")]
 
 // Version information for an assembly consists of the following four values:
 //
