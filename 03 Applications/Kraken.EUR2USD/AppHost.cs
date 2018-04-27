@@ -7,7 +7,7 @@ using System.Threading;
 using Unity;
 using FluentScheduler;
 
-namespace Applications.Server
+namespace Kraken.EUR2USD
 {
     public class AppHost : IDisposable
     {

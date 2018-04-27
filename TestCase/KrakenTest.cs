@@ -9,7 +9,7 @@ namespace TestCase
     public class KrakenTest
     {
         [TestMethod]
-        public void GetTicker()
+        public void GetKrakenTicker()
         {
             IKrakenRepertory client = new KrakenRepertory();
 
@@ -19,7 +19,7 @@ namespace TestCase
         }
 
         [TestMethod]
-        public void ReloadTicker()
+        public void ReloadKrakenTicker()
         {
             IKrakenRepertory client = new KrakenRepertory();
 
@@ -28,7 +28,7 @@ namespace TestCase
         }
 
         [TestMethod]
-        public void GetBalances()
+        public void GetKrakenBalances()
         {
             KrakenRepertory client = new KrakenRepertory();
 
@@ -38,7 +38,7 @@ namespace TestCase
         }
 
         [TestMethod]
-        public void ReloadBalances()
+        public void ReloadKrakenBalances()
         {
             IKrakenRepertory client = new KrakenRepertory();
 
@@ -47,7 +47,7 @@ namespace TestCase
         }
 
         [TestMethod]
-        public void GetBookings()
+        public void GetKrakenBookings()
         {
             KrakenRepertory client = new KrakenRepertory();
 
@@ -57,7 +57,7 @@ namespace TestCase
         }
 
         [TestMethod]
-        public void ReloadBookings()
+        public void ReloadKrakenBookings()
         {
             IKrakenRepertory client = new KrakenRepertory();
 

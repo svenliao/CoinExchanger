@@ -6,7 +6,7 @@ using API.Exchange;
 using Domain.Exchange.Rate;
 using API.Kraken;
 using Domain.Kraken;
-using Applications.Server;
+using Kraken.EUR2USD;
 
 namespace TestCase
 {

@@ -215,9 +215,9 @@
       <Project>{605fb6bb-35ea-4b74-b17d-f56a98f7d91e}</Project>
       <Name>Domain.Kraken</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\03 Applications\Application.Server\Applications.Server.csproj">
+    <ProjectReference Include="..\..\03 Applications\Kraken.EUR2USD\Kraken.EUR2USD.csproj">
       <Project>{bcd85da5-7562-49ce-a5e5-f908f0976793}</Project>
-      <Name>Applications.Server</Name>
+      <Name>Kraken.EUR2USD</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

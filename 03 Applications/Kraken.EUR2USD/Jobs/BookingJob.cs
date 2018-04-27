@@ -9,21 +9,21 @@ using FluentScheduler;
 using Unity;
 
 
-namespace Applications.Server.Jobs
+namespace Kraken.EUR2USD.Jobs
 {
-    public class BalanceJob : IJob
+    public class BookingJob : IJob
     {
         private IUnityContainer resolver;
         private IKrakenRepertory repertory;
 
-        public BalanceJob()
+        public BookingJob()
         {
             resolver = IocFactory.Default;
             repertory = resolver.Resolve<IKrakenRepertory>();
         }
         public void Execute()
         {
-            repertory.ReloadBlance();
+            repertory.ReloadBooking();
         }
     }
 }

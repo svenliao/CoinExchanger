@@ -37,6 +37,10 @@ namespace API.Kraken
 
         public bool ReloadBlance()
         {
+            var account = new AccountDao().Select()
+                   .Find(a => a.Default > 0 || a.Platform.ID == platform.ID);
+            string uid = account.UID;
+
             var depth = client.GetBalance();
             var balances = new List<BalanceTable>();
             var res = depth["result"] as JsonObject;
@@ -51,12 +55,7 @@ namespace API.Kraken
                 {
                     coin = coin.Substring(1);
                 }
-
-                var account = new AccountDao().Select()
-                    .Find(a => a.Default > 0||a.Platform.ID==platform.ID);
-
-                string uid = account.UID;
-
+           
                 BalanceTable balance = new BalanceTable()
                 {
                     UID = uid,
@@ -173,6 +172,6 @@ namespace API.Kraken
             dao.InsertOrUpdate(bookings);
 
             return true;
-        }
+        }        
     }
 }

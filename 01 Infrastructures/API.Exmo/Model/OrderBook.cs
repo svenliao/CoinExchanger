@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace API.Exmo.Model
 {
     public class OrderBook 
     {
+        public string Pair { get; set; }
         [JsonProperty("ask_quantity")]
         public decimal AskQuantity { get; private set ; }
         [JsonProperty("ask_amount")]

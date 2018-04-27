@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentScheduler;
-using Applications.Server;
 using DAL.DataBase.Dao;
 
 namespace KrakenClient

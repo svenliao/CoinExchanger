@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Kraken;
+using Domain.Exchange.Rate;
 using Domain.Common.Ioc;
 using FluentScheduler;
 using Unity;
 
-
-namespace Applications.Server.Jobs
+namespace Kraken.EUR2USD.Jobs
 {
-    public class BookingJob : IJob
+    public class ExchangeRateJob : IJob
     {
         private IUnityContainer resolver;
-        private IKrakenRepertory repertory;
+        private IExchangeRepertory repertory;
 
-        public BookingJob()
+        public ExchangeRateJob()
         {
             resolver = IocFactory.Default;
-            repertory = resolver.Resolve<IKrakenRepertory>();
+            repertory = resolver.Resolve<IExchangeRepertory>();
         }
         public void Execute()
         {
-            repertory.ReloadBooking();
+            repertory.ReloadTodayRates();
         }
     }
 }

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Applications.Server;
 using Jayrock.Json;
 using Jayrock.Json.Conversion;
 using Unity;
@@ -18,6 +17,7 @@ using Domain.Kraken;
 using Domain.Exchange.Rate;
 using API.Exchange;
 using API.Kraken;
+using Kraken.EUR2USD;
 
 namespace KrakenClient
 {

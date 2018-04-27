@@ -124,7 +124,7 @@ namespace API.Exmo
             }
         }
 
-        #region Pulick request
+        #region Pulick queries
 
         public List<Ticker> GetTicker(List<string> pairs)
         {
@@ -143,6 +143,43 @@ namespace API.Exmo
             return tickers;
         }
 
+        public List<OrderBook> GetOrderBooking(List<string> pairs,int limit)
+        {
+            string strPair = string.Empty;
+            var orders = new List<OrderBook>();
+
+            pairs.ForEach(p => {
+                strPair = strPair + p + ",";
+            });
+
+            if (!string.IsNullOrEmpty(strPair))
+            {
+                strPair = strPair.Substring(0, strPair.Length - 1);
+            }
+            var jsonQuery = Query("order_book", new Dictionary<string, string>(), strPair,limit);
+            var objQuery = JObject.Parse(jsonQuery.ToString());
+
+            foreach (var pair in pairs)
+            {
+                var order = (JsonConvert.DeserializeObject<OrderBook>(objQuery[pair].ToString()));
+                order.Pair = pair;
+                orders.Add(order);
+            }
+
+            return orders;
+        }
+
+        #endregion
+
+        #region Private user data queries
+
+        public JObject GetUserInfo()
+        {
+            var jsonQuery = Query("user_info", new Dictionary<string, string>());
+            var objQuery = JObject.Parse(jsonQuery.ToString());
+
+            return objQuery;
+        }
         #endregion
         #region Helper methods
         public string Sign(string key, string message)

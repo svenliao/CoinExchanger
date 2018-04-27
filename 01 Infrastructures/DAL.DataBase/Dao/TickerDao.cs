@@ -200,9 +200,9 @@ namespace DAL.DataBase.Dao
             foreach (var obj in objs)
             {
                 var list = Select(obj.Coin);
-                if (list.Exists(o=>o.Currency==obj.Currency))
+                if (list.Exists(o=>o.Currency==obj.Currency && o.Platform.ID == obj.Platform.ID))
                 {
-                    var ex = list.Find(o => o.Currency == obj.Currency);
+                    var ex = list.Find(o => o.Currency == obj.Currency && o.Platform.ID == obj.Platform.ID);
                     obj.ID = ex.ID;
                     obj.CreateTime = ex.CreateTime;
                     Update(obj);

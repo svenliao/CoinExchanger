@@ -8,21 +8,22 @@ using Domain.Common.Ioc;
 using FluentScheduler;
 using Unity;
 
-namespace Applications.Server.Jobs
+
+namespace Kraken.EUR2USD.Jobs
 {
-    public class TickerJob : IJob
+    public class BalanceJob : IJob
     {
         private IUnityContainer resolver;
         private IKrakenRepertory repertory;
 
-        public TickerJob()
+        public BalanceJob()
         {
             resolver = IocFactory.Default;
             repertory = resolver.Resolve<IKrakenRepertory>();
         }
         public void Execute()
         {
-            repertory.ReloadTicker();
+            repertory.ReloadBlance();
         }
     }
 }

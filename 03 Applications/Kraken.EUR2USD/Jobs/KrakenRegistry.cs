@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Applications.Server.Jobs;
+using Kraken.EUR2USD.Jobs;
 using FluentScheduler;
 
-namespace Applications.Server
+namespace Kraken.EUR2USD
 {
     public class KrakenRegistry:Registry
     {

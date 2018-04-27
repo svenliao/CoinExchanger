@@ -11,5 +11,13 @@ namespace Domain.Exmo
     {
         bool ReloadTicker();
         List<TickerTable> GetTicker();
+
+        List<BookingTable> GetBooking(string coin);
+
+        bool ReloadBooking();
+
+        List<BalanceTable> GetBalance();
+
+        bool ReloadBlance();
     }
 }
