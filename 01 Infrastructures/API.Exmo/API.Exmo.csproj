@@ -53,6 +53,7 @@
     <Compile Include="Model\PairSettings.cs" />
     <Compile Include="Model\Ticker.cs" />
     <Compile Include="Model\Trades.cs" />
+    <Compile Include="MoneyPoloClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

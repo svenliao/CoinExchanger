@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exmo.Kraken.RUB2EUR
+namespace API.Exmo
 {
-    public class Class1
+    public class MoneyPoloClient
     {
     }
 }

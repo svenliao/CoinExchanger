@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Data;
 using System.Data.Common;
 using System.Configuration;
+using System.Threading;
 
 namespace DAL.DataBase.SQLiteHelper
 {
@@ -17,6 +18,8 @@ namespace DAL.DataBase.SQLiteHelper
     {
         // Application.StartupPath  
         public static string LocalDbConnectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+
+        private static Mutex _mutex = new Mutex();
 
         #region ExecuteNonQuery  
         /// <summary>  
@@ -36,6 +39,7 @@ namespace DAL.DataBase.SQLiteHelper
                 PrepareCommand(cmd, con, ref trans, true, cmd.CommandType, cmd.CommandText);
                 try
                 {
+                    _mutex.WaitOne();
                     result = cmd.ExecuteNonQuery();
                     trans.Commit();
                 }
@@ -43,6 +47,10 @@ namespace DAL.DataBase.SQLiteHelper
                 {
                     trans.Rollback();
                     throw ex;
+                }
+                finally
+                {
+                    _mutex.ReleaseMutex();
                 }
             }
             return result;
@@ -69,6 +77,7 @@ namespace DAL.DataBase.SQLiteHelper
                 PrepareCommand(cmd, con, ref trans, true, commandType, commandText);
                 try
                 {
+                    _mutex.WaitOne();
                     result = cmd.ExecuteNonQuery();
                     trans.Commit();
                 }
@@ -76,6 +85,10 @@ namespace DAL.DataBase.SQLiteHelper
                 {
                     trans.Rollback();
                     throw ex;
+                }
+                finally
+                {
+                    _mutex.ReleaseMutex();
                 }
             }
             return result;
@@ -104,6 +117,7 @@ namespace DAL.DataBase.SQLiteHelper
                 PrepareCommand(cmd, con, ref trans, true, commandType, commandText);
                 try
                 {
+                    _mutex.WaitOne();
                     result = cmd.ExecuteNonQuery();
                     trans.Commit();
                 }
@@ -111,6 +125,10 @@ namespace DAL.DataBase.SQLiteHelper
                 {
                     trans.Rollback();
                     throw ex;
+                }
+                finally
+                {
+                    _mutex.ReleaseMutex();
                 }
             }
             return result;
@@ -135,6 +153,7 @@ namespace DAL.DataBase.SQLiteHelper
                 PrepareCommand(cmd, con, ref trans, true, cmd.CommandType, cmd.CommandText);
                 try
                 {
+                    _mutex.WaitOne();
                     result = cmd.ExecuteScalar();
                     trans.Commit();
                 }
@@ -142,6 +161,10 @@ namespace DAL.DataBase.SQLiteHelper
                 {
                     trans.Rollback();
                     throw ex;
+                }
+                finally
+                {
+                    _mutex.ReleaseMutex();
                 }
             }
             return result;
@@ -168,6 +191,7 @@ namespace DAL.DataBase.SQLiteHelper
                 PrepareCommand(cmd, con, ref trans, true, commandType, commandText);
                 try
                 {
+                    _mutex.WaitOne();
                     result = cmd.ExecuteScalar();
                     trans.Commit();
                 }
@@ -175,6 +199,10 @@ namespace DAL.DataBase.SQLiteHelper
                 {
                     trans.Rollback();
                     throw ex;
+                }
+                finally
+                {
+                    _mutex.ReleaseMutex();
                 }
             }
             return result;
@@ -203,6 +231,7 @@ namespace DAL.DataBase.SQLiteHelper
                 PrepareCommand(cmd, con, ref trans, true, commandType, commandText);
                 try
                 {
+                    _mutex.WaitOne();
                     result = cmd.ExecuteScalar();
                     trans.Commit();
                 }
@@ -210,6 +239,10 @@ namespace DAL.DataBase.SQLiteHelper
                 {
                     trans.Rollback();
                     throw ex;
+                }
+                finally
+                {
+                    _mutex.ReleaseMutex();
                 }
             }
             return result;
@@ -234,11 +267,16 @@ namespace DAL.DataBase.SQLiteHelper
             PrepareCommand(cmd, con, ref trans, false, cmd.CommandType, cmd.CommandText);
             try
             {
+                _mutex.WaitOne();
                 reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                _mutex.ReleaseMutex();
             }
             return reader;
         }
@@ -264,11 +302,16 @@ namespace DAL.DataBase.SQLiteHelper
             PrepareCommand(cmd, con, ref trans, false, commandType, commandText);
             try
             {
+                _mutex.WaitOne();
                 reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                _mutex.ReleaseMutex();
             }
             return reader;
         }
@@ -295,11 +338,16 @@ namespace DAL.DataBase.SQLiteHelper
             PrepareCommand(cmd, con, ref trans, false, commandType, commandText, cmdParms);
             try
             {
+                _mutex.WaitOne();
                 reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                _mutex.ReleaseMutex();
             }
             return reader;
         }
@@ -320,6 +368,7 @@ namespace DAL.DataBase.SQLiteHelper
             PrepareCommand(cmd, con, ref trans, false, cmd.CommandType, cmd.CommandText);
             try
             {
+                _mutex.WaitOne();
                 SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
                 sda.Fill(ds);
             }
@@ -329,6 +378,7 @@ namespace DAL.DataBase.SQLiteHelper
             }
             finally
             {
+                _mutex.ReleaseMutex();
                 if (cmd.Connection != null)
                 {
                     if (cmd.Connection.State == ConnectionState.Open)
@@ -360,6 +410,7 @@ namespace DAL.DataBase.SQLiteHelper
             PrepareCommand(cmd, con, ref trans, false, commandType, commandText);
             try
             {
+                _mutex.WaitOne();
                 SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
                 sda.Fill(ds);
             }
@@ -369,6 +420,7 @@ namespace DAL.DataBase.SQLiteHelper
             }
             finally
             {
+                _mutex.ReleaseMutex();
                 if (con != null)
                 {
                     if (con.State == ConnectionState.Open)
@@ -401,6 +453,7 @@ namespace DAL.DataBase.SQLiteHelper
             PrepareCommand(cmd, con, ref trans, false, commandType, commandText, cmdParms);
             try
             {
+                _mutex.WaitOne();
                 SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
                 sda.Fill(ds);
             }
@@ -410,6 +463,7 @@ namespace DAL.DataBase.SQLiteHelper
             }
             finally
             {
+                _mutex.ReleaseMutex();
                 if (con != null)
                 {
                     if (con.State == ConnectionState.Open)
