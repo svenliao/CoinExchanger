@@ -33,27 +33,34 @@
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsRUB = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsEETH = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel8 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsEBTC = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsEur = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsKETH = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.tlsKBTC = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTicker = new System.Windows.Forms.DataGridView();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.save = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.option = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.listView2 = new System.Windows.Forms.ListView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -78,16 +85,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbRate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.tlsKXRP = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.tlsEXRP = new System.Windows.Forms.ToolStripLabel();
             this.panel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTicker)).BeginInit();
             this.panel3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -110,14 +120,16 @@
             this.toolStripLabel5,
             this.toolStripSeparator5,
             this.toolStripButton4,
-            this.toolStripLabel6,
+            this.tlsRUB,
             this.toolStripSeparator6,
             this.toolStripButton5,
-            this.toolStripLabel7,
+            this.tlsEETH,
             this.toolStripSeparator7,
             this.toolStripButton6,
-            this.toolStripLabel8,
-            this.toolStripSeparator8});
+            this.tlsEBTC,
+            this.toolStripSeparator8,
+            this.toolStripButton8,
+            this.tlsEXRP});
             this.toolStrip2.Location = new System.Drawing.Point(0, 25);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(815, 25);
@@ -142,13 +154,13 @@
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.Text = "RUB";
             // 
-            // toolStripLabel6
+            // tlsRUB
             // 
-            this.toolStripLabel6.Name = "toolStripLabel6";
-            this.toolStripLabel6.Size = new System.Drawing.Size(39, 22);
-            this.toolStripLabel6.Text = "20.00";
+            this.tlsRUB.Name = "tlsRUB";
+            this.tlsRUB.Size = new System.Drawing.Size(39, 22);
+            this.tlsRUB.Text = "20.00";
             // 
             // toolStripSeparator6
             // 
@@ -162,13 +174,13 @@
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "toolStripButton5";
+            this.toolStripButton5.Text = "ETH";
             // 
-            // toolStripLabel7
+            // tlsEETH
             // 
-            this.toolStripLabel7.Name = "toolStripLabel7";
-            this.toolStripLabel7.Size = new System.Drawing.Size(46, 22);
-            this.toolStripLabel7.Text = "0.0000";
+            this.tlsEETH.Name = "tlsEETH";
+            this.tlsEETH.Size = new System.Drawing.Size(46, 22);
+            this.tlsEETH.Text = "0.0000";
             // 
             // toolStripSeparator7
             // 
@@ -184,11 +196,16 @@
             this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton6.Text = "toolStripButton6";
             // 
-            // toolStripLabel8
+            // tlsEBTC
             // 
-            this.toolStripLabel8.Name = "toolStripLabel8";
-            this.toolStripLabel8.Size = new System.Drawing.Size(46, 22);
-            this.toolStripLabel8.Text = "0.0000";
+            this.tlsEBTC.Name = "tlsEBTC";
+            this.tlsEBTC.Size = new System.Drawing.Size(46, 22);
+            this.tlsEBTC.Text = "0.0000";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStrip1
             // 
@@ -196,14 +213,16 @@
             this.toolStripLabel1,
             this.toolStripSeparator1,
             this.toolStripButton1,
-            this.toolStripLabel2,
+            this.tlsEur,
             this.toolStripSeparator2,
             this.toolStripButton2,
-            this.toolStripLabel3,
+            this.tlsKETH,
             this.toolStripSeparator3,
             this.toolStripButton3,
-            this.toolStripLabel4,
-            this.toolStripSeparator4});
+            this.tlsKBTC,
+            this.toolStripSeparator4,
+            this.toolStripButton7,
+            this.tlsKXRP});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(815, 25);
@@ -228,13 +247,13 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Text = "EUR";
             // 
-            // toolStripLabel2
+            // tlsEur
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel2.Text = "1.00  ";
+            this.tlsEur.Name = "tlsEur";
+            this.tlsEur.Size = new System.Drawing.Size(40, 22);
+            this.tlsEur.Text = "1.00  ";
             // 
             // toolStripSeparator2
             // 
@@ -248,13 +267,13 @@
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Text = "ETH";
             // 
-            // toolStripLabel3
+            // tlsKETH
             // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(53, 22);
-            this.toolStripLabel3.Text = "16.0000";
+            this.tlsKETH.Name = "tlsKETH";
+            this.tlsKETH.Size = new System.Drawing.Size(53, 22);
+            this.tlsKETH.Text = "16.0000";
             // 
             // toolStripSeparator3
             // 
@@ -270,11 +289,11 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
-            // toolStripLabel4
+            // tlsKBTC
             // 
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(46, 22);
-            this.toolStripLabel4.Text = "0.0000";
+            this.tlsKBTC.Name = "tlsKBTC";
+            this.tlsKBTC.Size = new System.Drawing.Size(46, 22);
+            this.tlsKBTC.Text = "0.0000";
             // 
             // toolStripSeparator4
             // 
@@ -283,22 +302,62 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.dgvTicker);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 57);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(815, 131);
             this.panel2.TabIndex = 1;
             // 
-            // dataGridView1
+            // dgvTicker
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(815, 131);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvTicker.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTicker.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.type,
+            this.buyPrice,
+            this.sellPrice,
+            this.fee,
+            this.save,
+            this.option});
+            this.dgvTicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTicker.Location = new System.Drawing.Point(0, 0);
+            this.dgvTicker.Name = "dgvTicker";
+            this.dgvTicker.RowTemplate.Height = 23;
+            this.dgvTicker.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTicker.Size = new System.Drawing.Size(815, 131);
+            this.dgvTicker.TabIndex = 0;
+            // 
+            // type
+            // 
+            this.type.HeaderText = "币种";
+            this.type.Name = "type";
+            // 
+            // buyPrice
+            // 
+            this.buyPrice.HeaderText = "买入价";
+            this.buyPrice.Name = "buyPrice";
+            // 
+            // sellPrice
+            // 
+            this.sellPrice.HeaderText = "卖出价";
+            this.sellPrice.Name = "sellPrice";
+            // 
+            // fee
+            // 
+            this.fee.HeaderText = "手续费（%）";
+            this.fee.Name = "fee";
+            // 
+            // save
+            // 
+            this.save.HeaderText = "利润（%）";
+            this.save.Name = "save";
+            // 
+            // option
+            // 
+            this.option.HeaderText = "操作";
+            this.option.Name = "option";
+            this.option.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.option.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // panel3
             // 
@@ -386,7 +445,7 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.textBox2);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.txbRate);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 188);
@@ -474,17 +533,18 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Enabled = false;
             this.radioButton2.Location = new System.Drawing.Point(142, 16);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(41, 16);
             this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "BTC";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(95, 16);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(41, 16);
@@ -518,12 +578,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "最小利润：";
             // 
-            // textBox1
+            // txbRate
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 1;
+            this.txbRate.Location = new System.Drawing.Point(95, 40);
+            this.txbRate.Name = "txbRate";
+            this.txbRate.Size = new System.Drawing.Size(100, 21);
+            this.txbRate.TabIndex = 1;
+            this.txbRate.Text = "75";
             // 
             // label1
             // 
@@ -552,12 +613,37 @@
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // toolStripSeparator8
+            // toolStripButton7
             // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = global::ExmoClient.Properties.Resources.ripple;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton7.Text = "XRP";
             // 
-            // Form1
+            // tlsKXRP
+            // 
+            this.tlsKXRP.Name = "tlsKXRP";
+            this.tlsKXRP.Size = new System.Drawing.Size(46, 22);
+            this.tlsKXRP.Text = "0.0001";
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = global::ExmoClient.Properties.Resources.ripple;
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton8.Text = "XRP";
+            // 
+            // tlsEXRP
+            // 
+            this.tlsEXRP.Name = "tlsEXRP";
+            this.tlsEXRP.Size = new System.Drawing.Size(46, 22);
+            this.tlsEXRP.Text = "0.0001";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -567,7 +653,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Exmo对冲Kraken";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -576,7 +662,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTicker)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -598,26 +684,26 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel6;
+        private System.Windows.Forms.ToolStripLabel tlsRUB;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel7;
+        private System.Windows.Forms.ToolStripLabel tlsEETH;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel8;
+        private System.Windows.Forms.ToolStripLabel tlsEBTC;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripLabel tlsEur;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripLabel tlsKETH;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripLabel tlsKBTC;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTicker;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -642,9 +728,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbRate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn buyPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sellPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn save;
+        private System.Windows.Forms.DataGridViewLinkColumn option;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripLabel tlsEXRP;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripLabel tlsKXRP;
     }
 }
 

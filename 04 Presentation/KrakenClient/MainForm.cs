@@ -81,6 +81,7 @@ namespace KrakenClient
         public void RefreshTicker(object obj)
         {
             List<TickerTable> tables = obj as List<TickerTable>;
+            tables = tables.Where(t => t.Platform.Name == "Kraken").ToList();
             var coinList = tables.Select(t => t.Coin).Distinct();
 
             this.listView1.BeginInvoke(new MethodInvoker(delegate ()
@@ -112,6 +113,7 @@ namespace KrakenClient
         public void RefreshBalance(object obj)
         {
             List<BalanceTable> tables = obj as List<BalanceTable>;
+            tables = tables.Where(t => t.Platform.Name == "Kraken").ToList();
 
             foreach (var table in tables)
             {
@@ -157,6 +159,7 @@ namespace KrakenClient
         public void RefreshBooking(object obj)
         {
             var tables = obj as List<BookingTable>;
+            tables = tables.Where(t => t.Platform.Name == "Kraken").ToList();
 
             var usdBooking = tables.Find(b => b.Coin == SelectedCoin && b.Currency == "USD");
             var eurBooking = tables.Find(b => b.Coin == SelectedCoin && b.Currency == "EUR");
