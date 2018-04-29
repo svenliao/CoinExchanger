@@ -10,26 +10,19 @@ using Unity;
 
 namespace Exmo.Kraken.RUB2EUR.KrakenJobs
 {
-    public class TickerJob : IJob
+    public class OrderJob : IJob
     {
         private IUnityContainer resolver;
         private IKrakenRepertory repertory;
 
-        public TickerJob()
+        public OrderJob()
         {
             resolver = IocFactory.Default;
             repertory = resolver.Resolve<IKrakenRepertory>();
         }
         public void Execute()
         {
-            try
-            {
-                repertory.ReloadTicker();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            repertory.ReloadOrder();
         }
     }
 }

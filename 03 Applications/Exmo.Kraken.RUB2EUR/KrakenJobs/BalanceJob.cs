@@ -23,7 +23,14 @@ namespace Exmo.Kraken.RUB2EUR.KrakenJobs
         }
         public void Execute()
         {
-            repertory.ReloadBlance();
+            try
+            {
+                repertory.ReloadBlance();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

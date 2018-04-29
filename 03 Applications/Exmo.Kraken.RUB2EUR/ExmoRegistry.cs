@@ -13,8 +13,8 @@ namespace Exmo.Kraken.RUB2EUR
         public ExmoRegistry()
         {
             Schedule<BalanceJob>().ToRunNow().AndEvery(5).Seconds();
-            Schedule<BookingJob>().ToRunNow().AndEvery(20).Seconds();
-            Schedule<TickerJob>().ToRunNow().AndEvery(10).Seconds();
+            Schedule<BookingJob>().ToRunNow().AndEvery(10).Seconds();
+            Schedule<TickerJob>().ToRunNow().AndEvery(5).Seconds();
         }      
     }
 }

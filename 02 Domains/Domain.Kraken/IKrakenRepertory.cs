@@ -20,5 +20,11 @@ namespace Domain.Kraken
         List<BookingTable> GetBooking(string coin);
 
         bool ReloadBooking();
+
+        OrderTable GetOrder(string txid);
+
+        List<OrderTable> GetOrder();
+
+        bool ReloadOrder();
     }
 }

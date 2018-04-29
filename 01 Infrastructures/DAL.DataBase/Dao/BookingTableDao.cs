@@ -81,7 +81,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "Delect from Booking where id=@ID";
+                string sql = "delete from Booking where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {

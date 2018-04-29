@@ -83,6 +83,7 @@
     <Compile Include="ExmoJobs\TickerJob.cs" />
     <Compile Include="ExmoRegistry.cs" />
     <Compile Include="KrakenJobs\BalanceJob.cs" />
+    <Compile Include="KrakenJobs\OrderJob.cs" />
     <Compile Include="KrakenJobs\TickerJob.cs" />
     <Compile Include="KrakenRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

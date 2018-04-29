@@ -31,7 +31,7 @@ namespace API.Kraken
         {
             var dao = new BalanceDao();
             return dao.Select()
-                .Where(b=>b.Platform.ID==platform.ID)
+                .Where(b => b.Platform.ID == platform.ID)
                 .ToList();
         }
 
@@ -55,12 +55,12 @@ namespace API.Kraken
                 {
                     coin = coin.Substring(1);
                 }
-           
+
                 BalanceTable balance = new BalanceTable()
                 {
                     UID = uid,
                     Coin = coin,
-                    Platform=this.platform,
+                    Platform = this.platform,
                     Amount = double.Parse(item.Value.ToString())
                 };
 
@@ -165,13 +165,108 @@ namespace API.Kraken
                     Asks = asks,
                     Bids = bids
                 };
-                bookings.Add(booking);                
+                bookings.Add(booking);
             }
 
             var dao = new BookingTableDao();
             dao.InsertOrUpdate(bookings);
 
             return true;
-        }        
+        }
+
+        public OrderTable GetOrder(string txid)
+        {
+            var dao = new OrderDao();
+            return dao.Select(txid);
+        }
+
+        public List<OrderTable> GetOrder()
+        {
+            var dao = new OrderDao();
+            return dao.Select()
+                .Where(b => b.Platform.ID == platform.ID)
+                .ToList();
+        }
+
+        public bool ReloadOrder()
+        {
+            var account = new AccountDao().Select()
+                   .Find(a => a.Default > 0 || a.Platform.ID == platform.ID);
+            string uid = account.UID;
+
+            var dao = new OrderDao();
+            var tradeDao = new TradeDao();
+            var orders = new List<OrderTable>();
+            var trads = new List<TradeTable>();
+
+            string end = dao.SelectTxid();
+            var depth = client.GetClosedOrders(true, "", "", end);
+
+            var res = depth["result"] as JsonObject;
+            if (res != null)
+            {
+                var os = res["closed"] as JsonObject;
+
+                foreach (var item in os)
+                {
+                    JsonObject jOrder = item.Value as JsonObject;
+                    JsonObject jDescr = jOrder["descr"] as JsonObject;
+
+                    string pair = jDescr["pair"].ToString();
+                    int spiltIndex = (int)Math.Ceiling((double)pair.Length / 2);
+                    string coin = pair.Substring(0, spiltIndex);
+                    string currency = pair.Substring(spiltIndex, pair.Length - spiltIndex);
+
+                    var order = new OrderTable()
+                    {
+                        OrderTxid = item.Name,
+                        UID=uid,
+                        Opened = UnixTimeStampToDateTime(double.Parse(jOrder["opentm"].ToString())),
+                        Closed = UnixTimeStampToDateTime(double.Parse(jOrder["closetm"].ToString())),
+                        Status = jOrder["status"].ToString(),
+                        Volume = double.Parse(jOrder["vol"].ToString()),
+                        Price = double.Parse(jOrder["price"].ToString()),
+                        LimitPrice = double.Parse(jOrder["limitprice"].ToString()),
+
+                        Type = jDescr["type"].ToString(),
+                        LimitType = jDescr["ordertype"].ToString(),
+                        Coin = coin,
+                        Currency = currency,
+                        Pair = pair,
+                        CreateTime = DateTime.Now,
+                        LastChangeTime = DateTime.Now,
+                        Platform = this.platform
+                    };
+
+                    var jtrads = jOrder["trades"] as JsonArray;
+                    foreach (var jtrad in jtrads)
+                    {
+                        var trad = new TradeTable()
+                        {
+                            TransactionID = jtrad.ToString(),
+                            OrderTxid = item.Name,
+                            CreateTime = DateTime.Now,
+                            LastChangeTime = DateTime.Now,
+                            Platform = this.platform
+                        };
+
+                        trads.Add(trad);
+                    }
+
+                    orders.Add(order);
+                }
+
+                dao.InsertOrUpdate(orders);
+                tradeDao.InsertOrUpdate(trads);
+            }
+            return true;
+        }
+
+        private DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp);
+            return dtDateTime.ToLocalTime();
+        }
     }
 }

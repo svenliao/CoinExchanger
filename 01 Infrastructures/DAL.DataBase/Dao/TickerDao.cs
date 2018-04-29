@@ -85,7 +85,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "Delect from Tickers where id=@ID";
+                string sql = "delete from Tickers where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {

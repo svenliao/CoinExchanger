@@ -73,7 +73,7 @@ namespace DAL.DataBase.Dao
         {
             try
             {
-                string sql = "Delect from Platform where id=@ID";
+                string sql = "delete from Platform where id=@ID";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql))
                 {

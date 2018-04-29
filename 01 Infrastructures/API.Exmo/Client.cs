@@ -26,6 +26,8 @@ namespace API.Exmo
         long _nounce;
         PlatformTable _platform;
 
+        static object locker = new object();
+
         public PlatformTable Platform
         {
             get
@@ -48,7 +50,6 @@ namespace API.Exmo
             _version = account.ApiVersion;
             _key = account.Key;
             _secret = account.Secret;
-            _nounce = GetTimestamp();
         }
 
         public void Dispose()
@@ -60,6 +61,7 @@ namespace API.Exmo
         {
             using (var http = new HttpClient())
             {
+                _nounce = this.GetTimestamp();
                 var n = Interlocked.Increment(ref _nounce);
                 req.Add("nonce", Convert.ToString(n));
                 var message = ToQueryString(req);
@@ -92,7 +94,8 @@ namespace API.Exmo
         {
             using (var wb = new WebClient())
             {
-                req.Add("nonce", Convert.ToString(_nounce++));
+                _nounce = GetTimestamp();
+                req.Add("nonce", Convert.ToString(_nounce));
                 var message = ToQueryString(req);
 
                 var sign = Sign(_secret, message);
@@ -246,7 +249,7 @@ namespace API.Exmo
 
         public long GetTimestamp()
         {
-            var d = (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds;
+            var d = DateTime.Now.Ticks;
             return (long)d;
         }
 

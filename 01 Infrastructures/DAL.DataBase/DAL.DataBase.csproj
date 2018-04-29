@@ -63,6 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\TradeDao.cs" />
+    <Compile Include="Dao\OrderDao.cs" />
     <Compile Include="Dao\BookingTableDao.cs" />
     <Compile Include="Dao\PlatformDao.cs" />
     <Compile Include="Dao\TickerDao.cs" />
